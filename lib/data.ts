@@ -22,7 +22,7 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Stealth Startup - Multi-Tenant Hotel Operations SaaS",
-    period: "Feb 2025 - Present",
+    period: "Feb 2026 - Aug 2026",
     details: [
       "Building a multi-tenant SaaS platform (Next.js 16, TypeScript, PostgreSQL, Drizzle ORM) with 22 REST API endpoints, 7 database tables, and tenant isolation via hotelId scoping on every query",
       "Designed a secure guest check-in flow with hashed ID verification (SHA-256 + salt), Zod schema validation, input sanitization, and rate limiting to prevent brute-force and XSS attacks",
