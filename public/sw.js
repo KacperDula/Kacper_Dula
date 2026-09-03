@@ -1,4 +1,4 @@
-const CACHE_NAME = "kacper-portfolio-v1";
+const CACHE_NAME = "kacper-portfolio-v2";
 const OFFLINE_URLS = ["/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
@@ -20,15 +20,32 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+  const request = event.request;
+  if (request.method !== "GET") return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
+  // Network-first for page navigations so a new deploy is never masked by the cache.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
         .then((response) => {
           const cloned = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, cloned));
+          return response;
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match("/")))
+    );
+    return;
+  }
+
+  // Cache-first for static assets - Next.js content-hashes their filenames,
+  // so a changed asset always arrives under a new URL.
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      if (cached) return cached;
+      return fetch(request)
+        .then((response) => {
+          const cloned = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, cloned));
           return response;
         })
         .catch(() => caches.match("/"));

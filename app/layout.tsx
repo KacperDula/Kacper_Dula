@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kacper Dula | Backend-focused Software Engineer",
+  title: "Kacper Dula | Software Engineer",
   description:
-    "Portfolio of Kacper Dula, a backend-focused junior software engineer building scalable systems and real-world applications.",
+    "Portfolio of Kacper Dula, a software engineer in Athens building scalable, secure, multi-tenant systems.",
   manifest: "/manifest.webmanifest",
   keywords: [
     "Kacper Dula",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Portfolio"
   ],
   openGraph: {
-    title: "Kacper Dula | Backend-focused Software Engineer",
+    title: "Kacper Dula | Software Engineer",
     description:
       "Portfolio showcasing backend systems, full-stack projects, and engineering experience.",
     type: "website"
