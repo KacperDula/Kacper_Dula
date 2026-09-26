@@ -13,12 +13,20 @@ export const personalInfo = {
 };
 
 export const about = [
-  "Software Engineer with a strong academic foundation in Computer Science and hands-on experience shipping full-stack applications to production.",
-  "Currently building a stealth-mode SaaS startup for the hospitality industry, leading architecture, security hardening, and Azure cloud deployment.",
+  personalInfo.intro,
+  "Currently working as an AI Consultant - Software Engineer at G-LOGIC S.A., integrating AI-driven solutions into business workflows and applications.",
   "Experienced with Next.js, TypeScript, PostgreSQL, ASP.NET Core, Spring Boot, React, and REST APIs. Reliable, collaborative, and driven to build products that solve real problems."
 ];
 
 export const experience = [
+  {
+    role: "AI Consultant - Software Engineer",
+    company: "G-LOGIC S.A.",
+    period: "Sep 2026 - Present",
+    details: [
+      "Providing AI consulting and software engineering support, integrating AI-driven solutions into business workflows and applications."
+    ]
+  },
   {
     role: "Software Engineer",
     company: "Stealth Startup - Multi-Tenant Hotel Operations SaaS",

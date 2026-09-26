@@ -1,4 +1,4 @@
-const CACHE_NAME = "kacper-portfolio-v2";
+const CACHE_NAME = "kacper-portfolio-v3";
 const OFFLINE_URLS = ["/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {

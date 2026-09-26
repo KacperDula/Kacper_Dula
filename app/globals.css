@@ -12,15 +12,23 @@ html {
 
 body {
   @apply bg-bg text-text antialiased;
-  font-family: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-image:
-    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.14), transparent 44%),
-    radial-gradient(circle at 100% 100%, rgba(20, 184, 166, 0.18), transparent 38%);
+    radial-gradient(ellipse 60% 40% at 10% 0%, rgba(157, 155, 255, 0.10), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 95% 100%, rgba(197, 240, 107, 0.07), transparent 70%);
   min-height: 100vh;
 }
 
 ::selection {
-  background: rgba(94, 234, 212, 0.24);
+  background: rgba(197, 240, 107, 0.28);
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+  letter-spacing: -0.02em;
 }
 
 .section-heading {
@@ -28,7 +36,7 @@ body {
 }
 
 .panel {
-  @apply relative overflow-hidden rounded-2xl border border-white/10 bg-surface/70 shadow-soft backdrop-blur;
+  @apply relative overflow-hidden rounded-2xl border border-white/[0.07] bg-surface/80 shadow-soft backdrop-blur;
   container-type: inline-size;
 }
 
@@ -37,22 +45,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(120deg, rgba(45, 212, 191, 0.11), transparent 36%),
-    repeating-linear-gradient(90deg, rgba(34, 211, 238, 0.06) 0, rgba(34, 211, 238, 0.06) 1px, transparent 1px, transparent 26px);
-  opacity: 0.6;
-}
-
-.panel::after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
-  border-top: 1px solid rgba(34, 211, 238, 0.45);
-  border-right: 1px solid rgba(34, 211, 238, 0.45);
-  pointer-events: none;
+  background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 40%);
 }
 
 .blueprint-canvas {
@@ -65,8 +58,8 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 42px 42px;
   mask-image: radial-gradient(circle at center, black 20%, transparent 90%);
   opacity: 0.5;
@@ -81,16 +74,12 @@ body {
   content-visibility: visible;
 }
 
-.blueprint-canvas > section {
-  view-transition-name: section-block;
-}
-
 .magnetic-target {
   transition: transform 0.18s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-::view-transition-old(section-block),
-::view-transition-new(section-block) {
+::view-transition-old(root),
+::view-transition-new(root) {
   animation-duration: 260ms;
 }
 
@@ -140,8 +129,8 @@ textarea:focus-visible {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(94, 234, 212, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(197, 240, 107, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 240, 107, 0.05) 1px, transparent 1px);
   background-size: 22px 22px;
   mask-image: radial-gradient(circle at 60% 40%, black 24%, transparent 72%);
   animation: heroGridShift 18s linear infinite;
@@ -183,5 +172,10 @@ textarea:focus-visible {
 
   .magnetic-target {
     transition: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
