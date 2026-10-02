@@ -179,3 +179,31 @@ textarea:focus-visible {
     animation: none;
   }
 }
+
+/* Coding avatar logo (components/coding-avatar.tsx) */
+.av .av-hand,
+.av .av-blink,
+.av .av-glyph {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.av .av-hand { animation: av-type 0.32s ease-in-out infinite alternate; }
+.av .av-hand-r { animation-delay: 0.16s; }
+.av .av-blink { animation: av-blink 4s infinite; }
+.av .av-glow { animation: av-glow 2.4s ease-in-out infinite; }
+.av .av-glyph { opacity: 0; animation: av-float 2.8s ease-out infinite; }
+.av .av-glyph-2 { animation-delay: 1.4s; }
+
+@keyframes av-type { to { transform: translateY(-2px); } }
+@keyframes av-blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.1); } }
+@keyframes av-glow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+@keyframes av-float {
+  0% { opacity: 0; transform: translateY(8px); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .av * { animation: none !important; }
+  .av .av-glyph { opacity: 1; }
+}

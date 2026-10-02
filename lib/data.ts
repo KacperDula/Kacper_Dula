@@ -220,7 +220,7 @@ export const education = [
 export const languages = ["Polish (Native)", "Greek (Native)", "English (Fluent)"];
 
 export const sectionIds = [
-  "hero",
+  "home",
   "about",
   "experience",
   "projects",

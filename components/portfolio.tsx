@@ -30,7 +30,7 @@ const reveal = {
 };
 
 export function Portfolio() {
-  const [activeSection, setActiveSection] = useState<string>("hero");
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
     const observers = sectionIds.map((id) => {
@@ -72,7 +72,7 @@ export function Portfolio() {
       <Nav sections={sectionIds} activeSection={activeSection} />
 
       <main id="main-content" className="blueprint-canvas mx-auto max-w-6xl space-y-28 px-4 py-12 sm:px-6 sm:py-20">
-        <section id="hero" className="hero-noise relative isolate min-h-[72vh] scroll-mt-28 overflow-hidden pt-8">
+        <section id="home" className="hero-noise relative isolate min-h-[72vh] scroll-mt-28 overflow-hidden pt-8">
           <CodeAtlas />
           <HeroVisual />
           <div className="relative z-10 max-w-3xl">

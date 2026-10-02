@@ -18,7 +18,7 @@ function DeviceStage({ project, onOpen, flip }: { project: Featured; onOpen: () 
     <button
       type="button"
       onClick={onOpen}
-      aria-label={`Open ${project.title} screenshots`}
+      aria-label={`Preview ${project.title}`}
       className="group/stage relative block w-full px-4 pb-10 [perspective:1600px] focus-visible:outline-none sm:px-8"
     >
       <div className="absolute inset-x-10 bottom-0 h-10 rounded-[50%] bg-black/70 blur-2xl" aria-hidden="true" />
@@ -49,7 +49,7 @@ function DeviceStage({ project, onOpen, flip }: { project: Featured; onOpen: () 
       )}
 
       <span className="absolute left-3 top-12 rounded-full border border-white/15 bg-bg/80 px-3 py-1 text-xs font-medium text-text opacity-0 backdrop-blur transition-opacity group-hover/stage:opacity-100 group-focus-visible/stage:opacity-100">
-        View {project.shots.desktop.length + (phone ? 1 : 0)} screenshots
+        Preview
       </span>
     </button>
   );
@@ -188,7 +188,7 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                   onClick={() => setOpen(project)}
                   className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg transition hover:brightness-95"
                 >
-                  View screenshots
+                  Preview
                 </button>
                 <a
                   href={project.repo}

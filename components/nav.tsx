@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CodingAvatar } from "@/components/coding-avatar";
 
 type NavProps = {
   sections: readonly string[];
@@ -11,8 +12,8 @@ export function Nav({ sections, activeSection }: NavProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6" aria-label="Main navigation">
-        <a href="#hero" className="shrink-0 text-sm font-semibold tracking-[0.18em] text-accent uppercase">
-          KD
+        <a href="#home" className="group shrink-0" aria-label="Kacper Dula - back to top">
+          <CodingAvatar className="h-10 w-10 transition-transform group-hover:scale-110" />
         </a>
         <ul className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto">
           {sections.map((section) => {
