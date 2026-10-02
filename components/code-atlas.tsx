@@ -20,15 +20,19 @@ const iconicSnippets: IconicSnippet[] = [
   { line: "git commit -m \"initial commit\"", source: "Git" }
 ];
 
+// Integer hash, not Math.sin: sin of large args differs between Node and browsers,
+// which made server and client positions disagree and broke hydration.
 function seededRandom(seed: number): number {
-  const x = Math.sin(seed * 9973.17) * 10000;
-  return x - Math.floor(x);
+  let h = Math.imul(seed ^ 0x9e3779b9, 0x85ebca6b);
+  h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
 }
 
+// Jittered 5x2 grid in the band below the hero copy, so snippets never cover the text.
 function markerPosition(index: number) {
   return {
-    x: 8 + seededRandom(index + 1) * 84,
-    y: 16 + seededRandom(index + 101) * 62
+    x: 3 + (index % 5) * 19 + seededRandom(index + 1) * 5,
+    y: 63 + Math.floor(index / 5) * 15 + seededRandom(index + 101) * 4
   };
 }
 
@@ -89,7 +93,7 @@ export function CodeAtlas() {
             }
           >
             <span className="absolute -left-2 -top-2 h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_12px_rgba(197,240,107,0.8)]" />
-            <div className="max-w-[220px] rounded-lg border border-accent/25 bg-bg/70 px-3 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur">
+            <div className="max-w-[190px] rounded-lg border border-accent/25 bg-bg/70 px-3 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur">
               <code className="text-[11px] text-text">{snippet.line}</code>
               <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-accent/85">{snippet.source}</p>
             </div>

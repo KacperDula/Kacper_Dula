@@ -1,8 +1,22 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// WebGL can't render at build time (static export), so the 3D scene is client-only.
+const Hero3D = dynamic(() => import("@/components/hero-3d"), { ssr: false, loading: () => <HeroSvg /> });
 
 export function HeroVisual() {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div className="pointer-events-none absolute -top-6 right-0 z-0 hidden h-[430px] w-[460px] md:block" aria-hidden="true">
+      {reduceMotion ? <HeroSvg /> : <Hero3D fallback={<HeroSvg />} />}
+    </div>
+  );
+}
+
+function HeroSvg() {
   const reduceMotion = useReducedMotion();
 
   const floatTransition = reduceMotion
@@ -24,7 +38,7 @@ export function HeroVisual() {
       };
 
   return (
-    <div className="pointer-events-none absolute -top-6 right-0 z-0 hidden h-[430px] w-[460px] md:block" aria-hidden="true">
+    <div className="absolute inset-0">
       <motion.div
         className="absolute inset-8 rounded-full bg-accent-2/20 blur-3xl"
         animate={reduceMotion ? undefined : { scale: [0.92, 1.08, 0.95], opacity: [0.45, 0.72, 0.52] }}

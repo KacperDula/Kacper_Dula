@@ -98,7 +98,70 @@ export const skills = {
   ]
 };
 
-export const projects = [
+export type ProjectShot = { src: string; alt: string };
+
+export type Project = {
+  title: string;
+  tagline?: string;
+  description: string;
+  repo: string;
+  stack: string[];
+  /** First desktop shot is the cover; `mobile` sits on top of it in a phone frame. */
+  shots?: { desktop: ProjectShot[]; mobile?: ProjectShot };
+};
+
+export const projects: Project[] = [
+  {
+    title: "GreenPeak Solutions",
+    tagline: "Full-stack marketing site, blog engine & admin CMS",
+    description:
+      "Full-stack TypeScript platform for small-business marketing: React marketing site, Markdown blog with categories and search, lead-capture form with SMTP notifications, and a JWT-secured admin workspace for publishing content.",
+    repo: "https://github.com/KacperDula/GreenPeak-Solutions",
+    stack: ["React", "TypeScript", "Express", "SQLite", "Tailwind", "JWT"],
+    shots: {
+      desktop: [
+        { src: "/projects/greenpeak/home.jpg", alt: "GreenPeak home page hero" },
+        { src: "/projects/greenpeak/services.jpg", alt: "GreenPeak services page" },
+        { src: "/projects/greenpeak/blog.jpg", alt: "GreenPeak blog with category filters" },
+        { src: "/projects/greenpeak/blog-post.jpg", alt: "GreenPeak blog post page" },
+        { src: "/projects/greenpeak/about.jpg", alt: "GreenPeak about page" },
+        { src: "/projects/greenpeak/contact.jpg", alt: "GreenPeak contact form" },
+        { src: "/projects/greenpeak/admin.jpg", alt: "GreenPeak admin login" }
+      ],
+      mobile: { src: "/projects/greenpeak/home-mobile.jpg", alt: "GreenPeak home page on mobile" }
+    }
+  },
+  {
+    title: "React Analytics Dashboard",
+    tagline: "Live KPIs, charts & activity feeds",
+    description:
+      "Responsive analytics dashboard: KPI cards, area, radar and donut charts, sales tables and activity feeds built from 20+ reusable React components.",
+    repo: "https://github.com/KacperDula/React-Analytics-Dashboard",
+    stack: ["React", "ApexCharts", "ECharts", "Bootstrap 5", "REST API"],
+    shots: {
+      desktop: [
+        { src: "/projects/analytics/overview.jpg", alt: "Analytics dashboard overview with KPI cards and reports chart" },
+        { src: "/projects/analytics/sales-traffic.jpg", alt: "Analytics dashboard top-selling table and website traffic chart" }
+      ],
+      mobile: { src: "/projects/analytics/reports-mobile.jpg", alt: "Analytics dashboard reports chart on mobile" }
+    }
+  },
+  {
+    title: "Mini Quiz App",
+    tagline: "React fundamentals assessment",
+    description:
+      "10-question React fundamentals quiz with progress tracking, instant scoring and a restart flow — a deliberately small component tree with all state in one place.",
+    repo: "https://github.com/KacperDula/Mini-Quiz-App-Skill4Jobs-SEVOPA",
+    stack: ["React 19", "Vite", "Accessible UI"],
+    shots: {
+      desktop: [
+        { src: "/projects/mini-quiz/mid-quiz.jpg", alt: "Mini Quiz mid-quiz question with a selected answer" },
+        { src: "/projects/mini-quiz/question.jpg", alt: "Mini Quiz first question" },
+        { src: "/projects/mini-quiz/result.jpg", alt: "Mini Quiz final score screen" }
+      ],
+      mobile: { src: "/projects/mini-quiz/result-mobile.jpg", alt: "Mini Quiz final score on mobile" }
+    }
+  },
   {
     title: "GameStore Minimal API",
     description:
@@ -114,18 +177,20 @@ export const projects = [
     stack: ["PHP", "Ratchet", "WebSockets", "MySQL"]
   },
   {
-    title: "React Analytics Dashboard",
+    title: "SalaryScope - Salary Prediction",
+    tagline: "ML model served via Flask",
     description:
-      "Responsive analytics dashboard with reusable React components and integrated charting libraries for data visualization.",
-    repo: "https://github.com/KacperDula/React-Analytics-Dashboard",
-    stack: ["React", "TypeScript", "Charting", "Responsive UI"]
-  },
-  {
-    title: "Salary Prediction System",
-    description:
-      "End-to-end machine learning workflow: data analysis, model training, and evaluation for salary prediction.",
+      "Machine learning web app that predicts salaries from experience, education and job title, with a benchmark chart comparing the prediction to junior, mid and senior levels. Dockerized and deployed on Cloud Run.",
     repo: "https://github.com/KacperDula/SalaryPrediction-Python",
-    stack: ["Python", "Pandas", "NumPy", "Scikit-Learn"]
+    stack: ["Python", "Scikit-Learn", "Pandas", "Flask", "Docker"],
+    shots: {
+      desktop: [
+        { src: "/projects/salary/benchmark.jpg", alt: "SalaryScope prediction with salary benchmark chart" },
+        { src: "/projects/salary/prediction.jpg", alt: "SalaryScope job details form and predicted salary" },
+        { src: "/projects/salary/home.jpg", alt: "SalaryScope landing view" }
+      ],
+      mobile: { src: "/projects/salary/prediction-mobile.jpg", alt: "SalaryScope prediction on mobile" }
+    }
   }
 ];
 

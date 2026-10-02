@@ -8,6 +8,7 @@ const sans = Instrument_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kacperdula.com"),
   title: "Kacper Dula | Software Engineer",
   description:
     "Portfolio of Kacper Dula, a software engineer in Athens building scalable, secure, multi-tenant systems.",
@@ -25,8 +26,10 @@ export const metadata: Metadata = {
     title: "Kacper Dula | Software Engineer",
     description:
       "Portfolio showcasing backend systems, full-stack projects, and engineering experience.",
-    type: "website"
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1920, height: 1080, alt: "Kacper Dula portfolio preview" }]
   },
+  twitter: { card: "summary_large_image", images: ["/og-image.jpg"] },
   appleWebApp: {
     capable: true,
     title: "Kacper Dula Portfolio",

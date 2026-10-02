@@ -6,8 +6,10 @@ import { CodeAtlas } from "@/components/code-atlas";
 import { ContactForm } from "@/components/contact-form";
 import { HeroVisual } from "@/components/hero-visual";
 import { Nav } from "@/components/nav";
+import { ProjectShowcase } from "@/components/project-showcase";
 import { PWARegister } from "@/components/pwa-register";
 import { TerminalMode } from "@/components/terminal-mode";
+import { TiltCard } from "@/components/tilt-card";
 import { ViewTransitions } from "@/components/view-transitions";
 import {
   about,
@@ -176,11 +178,13 @@ export function Portfolio() {
           {...reveal}
         >
           <h3 className="section-heading">Projects</h3>
+          <ProjectShowcase projects={projects} />
+          <h4 className="mb-5 mt-24 text-lg font-semibold text-white">More projects</h4>
           <div className="grid gap-4 md:grid-cols-2">
-            {projects.map((project) => (
-              <article
+            {projects.filter((project) => !project.shots).map((project) => (
+              <TiltCard
                 key={project.title}
-                className="group panel p-6 transition hover:-translate-y-1 hover:border-accent/40"
+                className="group panel h-full p-6 transition-colors hover:border-accent/40"
               >
                 <h4 className="text-xl font-semibold text-white">{project.title}</h4>
                 <p className="mt-3 text-sm text-muted">{project.description}</p>
@@ -200,7 +204,7 @@ export function Portfolio() {
                 >
                   View Repository -&gt;
                 </a>
-              </article>
+              </TiltCard>
             ))}
           </div>
         </motion.section>
