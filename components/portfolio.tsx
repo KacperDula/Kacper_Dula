@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { CodeAtlas } from "@/components/code-atlas";
 import { ContactForm } from "@/components/contact-form";
-import { HeroAvatar, HeroPortrait } from "@/components/hero-portrait";
+import { HeroAvatar } from "@/components/hero-avatar";
+import { HeroVisual } from "@/components/hero-visual";
 import { Nav } from "@/components/nav";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { PWARegister } from "@/components/pwa-register";
@@ -74,69 +75,58 @@ export function Portfolio() {
       <main id="main-content" className="blueprint-canvas mx-auto max-w-6xl space-y-28 px-4 py-12 sm:px-6 sm:py-20">
         <section id="home" className="hero-noise relative isolate min-h-[72vh] scroll-mt-28 overflow-hidden pt-8">
           <CodeAtlas />
-          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.35fr,0.9fr]">
-            <div>
-              <div className="lg:hidden">
-                <HeroAvatar />
-              </div>
-              <motion.p
-                {...reveal}
-                viewport={{ once: true }}
-                className="mb-4 text-sm font-semibold tracking-[0.2em] text-accent uppercase"
-              >
-                {personalInfo.location}
-              </motion.p>
-              <motion.h1
-                {...reveal}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.06 }}
-                className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
-              >
-                {personalInfo.name}
-              </motion.h1>
-              <motion.h2
-                {...reveal}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                className="mt-3 text-2xl font-semibold text-text/80 sm:text-4xl"
-              >
-                {personalInfo.title}
-              </motion.h2>
-              <motion.p
-                {...reveal}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.18 }}
-                className="mt-5 max-w-2xl text-base text-muted sm:text-lg"
-              >
-                {personalInfo.subtitle} {personalInfo.intro}
-              </motion.p>
-              <motion.div
-                {...reveal}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.24 }}
-                className="mt-8 flex flex-wrap gap-3"
-              >
-                <a
-                  href="#projects"
-                  className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-bg transition hover:brightness-95"
-                >
-                  View Projects
-                </a>
-                <a
-                  href="#contact"
-                  className="rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-accent/80 hover:text-accent"
-                >
-                  Contact Me
-                </a>
-              </motion.div>
-            </div>
-            <motion.div
-              className="hidden lg:block"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+          <HeroVisual />
+          <div className="relative z-10 max-w-3xl">
+            <HeroAvatar />
+            <motion.p
+              {...reveal}
+              viewport={{ once: true }}
+              className="mb-4 text-sm font-semibold tracking-[0.2em] text-accent uppercase"
             >
-              <HeroPortrait />
+              {personalInfo.location}
+            </motion.p>
+            <motion.h1
+              {...reveal}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.06 }}
+              className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            >
+              {personalInfo.name}
+            </motion.h1>
+            <motion.h2
+              {...reveal}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.12 }}
+              className="mt-3 text-2xl font-semibold text-text/80 sm:text-4xl"
+            >
+              {personalInfo.title}
+            </motion.h2>
+            <motion.p
+              {...reveal}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="mt-5 max-w-2xl text-base text-muted sm:text-lg"
+            >
+              {personalInfo.subtitle} {personalInfo.intro}
+            </motion.p>
+            <motion.div
+              {...reveal}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.24 }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <a
+                href="#projects"
+                className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-bg transition hover:brightness-95"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-accent/80 hover:text-accent"
+              >
+                Contact Me
+              </a>
             </motion.div>
           </div>
         </section>
